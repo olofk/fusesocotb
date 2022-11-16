@@ -1,0 +1,34 @@
+CAPI=2:
+
+name : ::axis_send_packet:0
+
+filesets:
+  rtl:
+    files:
+      - axis_send_packet.v : {file_type : verilogSource}
+      - test_axis_send_packet.py : {file_type : user, copyto : .}
+    depend : [vlog_tb_utils]
+
+targets:
+  default:
+    default_tool : icarus
+    filesets : [rtl]
+    parameters : [DW=8, MSG_LEN=17, MSG_STR=amessagetoyourudy]
+    tools:
+      icarus:
+        timescale : 1ns/1ns
+        vvp_options : [-M, "`cocotb-config --lib-dir`", "-m", libcocotbvpi_icarus]
+    toplevel : [axis_send_packet, vlog_tb_utils]
+
+parameters:
+  DW:
+    datatype : int
+    paramtype : vlogparam
+
+  MSG_LEN:
+    datatype : int
+    paramtype : vlogparam
+
+  MSG_STR:
+    datatype : str
+    paramtype : vlogparam
