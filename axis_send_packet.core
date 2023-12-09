@@ -11,13 +11,13 @@ filesets:
 
 targets:
   default:
-    default_tool : icarus
+    flow: sim
+    flow_options:
+      tool : icarus
+      cocotb_module : test_axis_send_packet
+      timescale: 1ns/1ns
     filesets : [rtl]
     parameters : [DW=8, MSG_LEN=17, MSG_STR=amessagetoyourudy]
-    tools:
-      icarus:
-        timescale : 1ns/1ns
-        vvp_options : [-M, "`cocotb-config --lib-dir`", "-m", libcocotbvpi_icarus]
     toplevel : [axis_send_packet, vlog_tb_utils]
 
 parameters:
