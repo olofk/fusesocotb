@@ -13,7 +13,7 @@ module axis_send_packet
     output wire		 o_msg_valid,
     input wire		 i_msg_ready);
 
-   reg [$clog2(MSG_LEN)-1:0] cnt;
+   reg [31:0]		 cnt;
 
    assign o_msg_data = MSG_STR[(MSG_LEN-cnt-1)*DW+:DW];
    assign o_msg_last = (cnt == MSG_LEN-1);
