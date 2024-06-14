@@ -32,8 +32,9 @@ async def recv_packet(dut, rate=0.5):
         if dut.o_msg_last.value:
             break
 
-    expected = cocotb.top.MSG_STR.value.decode('ascii')
+    expected = cocotb.top.MSG_STR._handle.get_signal_val_str().decode('ascii')
     assert l == expected
+    dut._log.info(f"Received {l}")
 
 async def init_dut(dut):
     cocotb.start_soon(Clock(dut.i_clk, 10, units="ns").start())
@@ -59,7 +60,7 @@ async def multi_request(dut, interval=20):
 
 async def multi_receive(dut):
     for i in range(5):
-        dut._log.info("Receiving packet " + str(i))
+        dut._log.info("Waiting for packet " + str(i))
         await recv_packet(dut)
 
 @cocotb.test()
