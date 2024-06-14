@@ -6,6 +6,7 @@ filesets:
   rtl:
     files:
       - axis_send_packet.v : {file_type : verilogSource}
+      - axis_send_packet_wrapper.v : {file_type : verilogSource}
       - test_axis_send_packet.py : {file_type : user, copyto : .}
     depend : [vlog_tb_utils]
 
@@ -18,7 +19,7 @@ targets:
       timescale: 1ns/1ns
     filesets : [rtl]
     parameters : [DW=8, MSG_LEN=17, MSG_STR=amessagetoyourudy]
-    toplevel : [axis_send_packet, vlog_tb_utils]
+    toplevel : axis_send_packet_wrapper
 
 parameters:
   DW:
