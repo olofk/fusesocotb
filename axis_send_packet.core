@@ -17,6 +17,7 @@ targets:
       tool : icarus
       cocotb_module : test_axis_send_packet
       timescale: 1ns/1ns
+      vcs_options: [-timescale=1ns/1ns]
     filesets : [rtl]
     parameters : [DW=8, MSG_LEN=17, MSG_STR=amessagetoyourudy]
     toplevel : axis_send_packet_wrapper
