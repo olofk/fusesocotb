@@ -1,6 +1,6 @@
 CAPI=2:
 
-name : ::axis_send_packet:0
+name : fusesoc:examples:axis_send_packet:0.1
 
 filesets:
   rtl:
